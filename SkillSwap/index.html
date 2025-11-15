@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Link to external CSS file for styling-->
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!--Header Section: Logo, Site Name, Tagline-->
+    <header>
+        <!--Team logo image-->
+        <img src="assets/logo.png" alt="Team logo" class="logo">
+        <!--Site name-->
+        <h1>SkillSwap</h1>
+        <!--Short tagline describing the platform-->
+        <p class="tagline">Peer-to-peer micro-tutoring for students</p>
+    </header>
+
+    <!--Main Section Hero Button + Form-->
+    
+    <main>
+  <!--Hero button to toggle the skill session form-->      
+  <button id="createSessionBtn">Create Skill Session</button>
+
+  <!--Form for creating a new skill seesion: hidden by default-->
+  <form id="sessionForm" style="display: none;">
+    <h2>Create a Skill Session</h2>
+    
+    <!--Input fields for session details-->
+    <label for="title">Skill Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <label for="duration">Duration (e.g. 30 mins):</label>
+    <input type="text" id="duration" name="duration" required>
+
+    <label for="offeredBy">Offered By:</label>
+    <input type="text" id="offeredBy" name="offeredBy" required>
+
+    <label for="availability">Availability:</label>
+    <input type="text" id="availability" name="availability" required>
+
+    <!--Submit button for the form-->
+    <button type="submit">Submit Session</button>
+  </form>
+
+  <!--Dashboard Section: Table to display sessions-->
+  <section id="dashboard">
+  <h2>Active Skill Sessions</h2>
+  <!--Table structure for displaying submitted sessions-->
+  <table id="sessionsTable" border="1" style="width:100%; text-align:left;">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Duration</th>
+        <th>Offered By</th>
+        <th>Availability</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows will be added dynamically with JavaScript -->
+    </tbody>
+  </table>
+</section>
+</main>
+
+    <!--Link to external javascript file for interactivity-->
+    <script src="script.js"></script>
+    
+</body>
+</html>
