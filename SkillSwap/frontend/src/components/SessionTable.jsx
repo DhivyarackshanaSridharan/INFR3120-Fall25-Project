@@ -5,11 +5,11 @@ export default function SessionTable() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // Fetch mock data from placeholder API
   const fetchSessions = async () => {
     try {
       setLoading(true);
-      const res = await fetch('https://jsonplaceholder.typicode.com/posts');    // TODO: Replace mock API with real backend once teammate finishes POST/GET routes
+      const API_URL = `${process.env.REACT_APP_API_URL}/sessions`;
+      const res = await fetch(API_URL);
       if (!res.ok) throw new Error(`GET /sessions failed: ${res.status}`);
       const data = await res.json();
       setSessions(data);
@@ -21,7 +21,6 @@ export default function SessionTable() {
     }
   };
 
-  // Re-fetch when a new session is created
   useEffect(() => {
     fetchSessions();
     const handler = () => fetchSessions();
@@ -38,20 +37,22 @@ export default function SessionTable() {
       <thead>
         <tr>
           <th>Title</th>
-          <th>Description</th>
+          <th>Tutor</th>
+          <th>Skill</th>
+          <th>Date</th>
           <th>Duration</th>
-          <th>Offered By</th>
-          <th>Availability</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
         {sessions.map((s) => (
-          <tr key={s.id || `${s.title}-${Math.random()}`}>
+          <tr key={s._id}>
             <td>{s.title || 'Untitled'}</td>
-            <td>{s.body || 'No description provided'}</td>
+            <td>{s.tutorName || '—'}</td>
+            <td>{s.skill || '—'}</td>
+            <td>{s.date ? new Date(s.date).toLocaleString() : '—'}</td>
             <td>{s.duration ? `${s.duration} mins` : '—'}</td>
-            <td>{s.offeredBy || 'Mock User'}</td>
-            <td>{s.availability || 'Anytime'}</td>
+            <td>{s.description || 'No description provided'}</td>
           </tr>
         ))}
       </tbody>

@@ -16,28 +16,35 @@ export default function SessionForm() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('Submitting...');
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setStatus('Submitting...');
 
-    try {
-      const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
+  try {
+    const API_URL = `${process.env.REACT_APP_API_URL}/sessions`;
+    const res = await fetch(API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-  });
+      body: JSON.stringify({
+        title: form.title.trim(),
+        tutorName: form.tutorName.trim(),
+        skill: form.skill.trim(),
+        date: form.date, // from datetime-local input
+        duration: Number(form.duration),
+        description: form.description.trim(),
+      }),
+    });
 
+    if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+    setStatus('Created ✔');
+    setForm({ title: '', tutorName: '', skill: '', date: '', duration: '', description: '' });
 
-      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-      setStatus('Created ✔');
-      setForm({ title: '', description: '', duration: '', offeredBy: '', availability: '' });
-
-      // Refresh table after new session
-      window.dispatchEvent(new Event('session-created'));
-    } catch (error) {
-      setStatus(`Error: ${error.message}`);
-    }
-  };
+    // Refresh table after new session
+    window.dispatchEvent(new Event('session-created'));
+  } catch (error) {
+    setStatus(`Error: ${error.message}`);
+  }
+};
 
   return (
     <form onSubmit={handleSubmit}>
@@ -47,23 +54,28 @@ export default function SessionForm() {
       </label>
 
       <label>
-        Description
-        <textarea name="description" value={form.description} onChange={handleChange} required />
+        Tutor Name
+        <input name="tutorName" value={form.tutorName} onChange={handleChange} required />
+      </label>
+
+      <label>
+        Skill
+        <input name="skill" value={form.skill} onChange={handleChange} required />
+      </label>
+
+      <label>
+        Date & Time
+        <input type="datetime-local" name="date" value={form.date} onChange={handleChange} required />
       </label>
 
       <label>
         Duration (mins)
-        <input name="duration" type="number" value={form.duration} onChange={handleChange} />
+        <input name="duration" type="number" value={form.duration} onChange={handleChange} required />
       </label>
 
       <label>
-        Offered By
-        <input name="offeredBy" value={form.offeredBy} onChange={handleChange} />
-      </label>
-
-      <label>
-        Availability
-        <input name="availability" value={form.availability} onChange={handleChange} />
+        Description
+        <textarea name="description" value={form.description} onChange={handleChange} required />
       </label>
 
       <button type="submit">Submit Session</button>
@@ -71,5 +83,6 @@ export default function SessionForm() {
         {status}
       </p>
     </form>
+
   );
 }

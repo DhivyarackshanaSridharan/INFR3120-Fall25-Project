@@ -22,6 +22,14 @@ body {
   margin-bottom: 8px;
 }
 
+.logo {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
 .title {
   color: #0097A7; /* Teal accent */
   margin: 0;
@@ -61,6 +69,17 @@ input, textarea, select {
   font-size: 14px;
 }
 
+form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #444;
+}
+
+form textarea {
+  resize: vertical;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -82,7 +101,71 @@ tr:nth-child(even) {
   background-color: #F5F5F5;
 }
 
+tr:hover {
+  background-color: #E0F7FA;
+}
+
 .actions {
   display: flex;
   gap: 8px;
 }
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+  }
+
+  th, td {
+    font-size: 13px;
+    padding: 10px;
+  }
+}
+
+.signin-btn {
+  margin-left: auto;
+  background-color: #0097A7; /* Teal accent */
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.signin-btn:hover {
+  background-color: #007c8a;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 32px;
+  background-color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.login-container h2 {
+  color: #0097A7;
+  margin-bottom: 12px;
+}
+
+.login-container p {
+  color: #666;
+}
+
