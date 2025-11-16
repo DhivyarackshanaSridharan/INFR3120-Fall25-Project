@@ -9,7 +9,7 @@ SkillSwap is a web application designed to help students share knowledge through
 This project was developed as part of (INFR3120 – Web and Scripting - Fall 2025), Group 48.
 
 The platform allows users to:
-- Create skill sessions with details such as title, description, duration, offered by, and availability.
+- Create skill sessions with details such as title, description,     duration, offered by, and availability.
 - View active sessions in a dashboard table.
 - Manage sessions with basic Create and Delete functionality (Edit placeholder included).
 - Prepare for backend integration to enable full CRUD operations.
@@ -38,12 +38,30 @@ As the "frontend developer", my responsibilities included:
 
 
 ## File Structure
+
+#### This was created just for a practice the below one is the one is the actual file format for the project ####
 INFR3120-Fall25-Project/ 
 index.html # Landing page, hero button, form, dashboard 
 style.css # Styling for layout, form, table, and buttons 
 script.js # Frontend logic: validation, confirmation, table CRUD 
 README.md # Documentation of project and contributions 
 assets/ # Logo and other static files
+
+#### The actual file structure ####
+INFR3120-Fall25-Project/  
+
+ frontend/  
+   src/  
+        App.js              # Main React entry point  
+        SessionForm.jsx     # Form component  
+        SessionTable.jsx    # Table component  
+        SkillSwap.css       # Styling for layout, form, table, and buttons  
+        index.js            # React DOM rendering  
+   public/  
+        index.html          # React root HTML  
+
+  assets/                   # Logo and other static files  
+  README.md                 # Documentation of project and contributions  
 
 
 ## Tools & Technologies
@@ -58,15 +76,7 @@ During development, I referred to:
 - YouTube tutorials – for practical demonstrations of form validation and CRUD logic
 - Various developer blogs and websites – for best practices in frontend design and table management
 
-## Next Steps
-- Backend Integration (Member 2):
-  - Connect form submission to Node.js/Express backend.
-  - Implement full CRUD operations (Create, Read, Update, Delete).
-  - Deploy project to a cloud service (Render, Vercel, or Netlify).
-
-- Demo Video (Step 7):
-  - Show landing page, hero button, form submission, and dashboard functionality.
-  - Explain frontend code with comments for clarity.
+## DEMO Video Link: 
 
 
 --------------------------------------------------------------------------------------
