@@ -8,7 +8,7 @@ export default function SessionTable() {
   const fetchSessions = async () => {
     try {
       setLoading(true);
-      const API_URL = `${process.env.REACT_APP_API_URL}/sessions`;
+      const API_URL = `${process.env.REACT_APP_API_URL.replace(/\/$/, '')}/sessions`;
       const res = await fetch(API_URL);
       if (!res.ok) throw new Error(`GET /sessions failed: ${res.status}`);
       const data = await res.json();

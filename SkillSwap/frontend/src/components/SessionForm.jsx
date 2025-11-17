@@ -20,8 +20,7 @@ export default function SessionForm() {
     setStatus('Submitting...');
 
     try {
-      const API_URL = `${process.env.REACT_APP_API_URL}/sessions`;
-
+      const API_URL = `${process.env.REACT_APP_API_URL.replace(/\/$/, '')}/sessions`;
       const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
