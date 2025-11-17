@@ -161,7 +161,64 @@ During development, I referred to:
 
 
 ##### Member 3 ######
+# Dashboard / Table View
 
+My first task was building the dashboard that shows all the active skill sessions.
+I created a dynamic table that pulls the data straight from our MongoDB database, so whenever we add, edit, or delete a session, the dashboard updates automatically.
+
+I made sure the table:
+
+Loads all sessions using our GET route
+
+Displays the title, category, date, and instructor
+
+Has Edit and Delete buttons for each row
+
+This basically lets the group see everything that's currently in the system at once.
+
+CRUD Testing (Create, Read, Update, Delete)
+
+I tested every CRUD operation to make sure everything worked properly from start to finish.
+
+What I tested:
+
+Create:
+I added a new session through the form and checked that it appeared on the dashboard and saved to the database.
+
+Read:
+I viewed all sessions on the dashboard to make sure everything was loading correctly.
+
+Update:
+I edited one of the sessions and confirmed the new info updated on the dashboard right away.
+
+Delete:
+I deleted a session and checked MongoDB to make sure the item was fully removed.
+
+I also took screenshots for each step to include in our final report and video.
+
+Deployment (Render)
+
+I was also in charge of deploying our project so it could run online instead of only on our laptops.
+I used Render, since it’s the easiest one to set up with Node.js.
+
+Steps I followed:
+
+Pushed our project to GitHub
+
+Created a Render Web Service
+
+Set the build command to npm install
+
+Set the start command to npm start
+
+Added all our .env variables
+
+Deployed the project and tested the live link
+
+After it deployed successfully, our app became publicly accessible for the team, professor, and anyone testing it.
+ 
+ 
+ # Richie Bazuaye 100881487
 
 #### DEFAULT #########
 
