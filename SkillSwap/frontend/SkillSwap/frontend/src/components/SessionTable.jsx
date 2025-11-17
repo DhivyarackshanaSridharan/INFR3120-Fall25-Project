@@ -37,6 +37,8 @@ export default function SessionTable() {
       <thead>
         <tr>
           <th>Title</th>
+          <th>Tutor</th>
+          <th>Skill</th>
           <th>Date</th>
           <th>Duration</th>
           <th>Description</th>
@@ -46,6 +48,8 @@ export default function SessionTable() {
         {sessions.map((s) => (
           <tr key={s._id}>
             <td>{s.title || 'Untitled'}</td>
+            <td>{s.tutorName || '—'}</td>
+            <td>{s.skill || '—'}</td>
             <td>{s.date ? new Date(s.date).toLocaleString() : '—'}</td>
             <td>{s.duration ? `${s.duration} mins` : '—'}</td>
             <td>{s.description || 'No description provided'}</td>
