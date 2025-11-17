@@ -2,14 +2,14 @@
 # SkillSwap – Peer-to-Peer Micro-Tutoring Platform
 
 ## Credits
-- Frontend Developer:Dhivyarackshana (Landing page, form UI, validation, dashboard)
+- Frontend Developer: Dhivyarackshana (Landing page, form UI, validation, dashboard)
 
 ## Project Overview
 SkillSwap is a web application designed to help students share knowledge through peer-to-peer micro-tutoring sessions.  
 This project was developed as part of (INFR3120 – Web and Scripting - Fall 2025), Group 48.
 
 The platform allows users to:
-- Create skill sessions with details such as title, description,     duration, offered by, and availability.
+- Create skill sessions with details such as title, description, duration, offered by, and availability.
 - View active sessions in a dashboard table.
 - Manage sessions with basic Create and Delete functionality (Edit placeholder included).
 - Prepare for backend integration to enable full CRUD operations.
@@ -35,7 +35,6 @@ As the "frontend developer", my responsibilities included:
   - Created a table to display active skill sessions.
   - Added "Delete" functionality (frontend only).
   - Added "Edit" placeholder (to be connected to backend later).
-
 
 ## File Structure
 
@@ -63,7 +62,6 @@ INFR3120-Fall25-Project/
   assets/                   # Logo and other static files  
   README.md                 # Documentation of project and contributions  
 
-
 ## Tools & Technologies
 - HTML5 – Structure of the web pages
 - CSS3 – Styling and layout
@@ -76,12 +74,15 @@ During development, I referred to:
 - YouTube tutorials – for practical demonstrations of form validation and CRUD logic
 - Various developer blogs and websites – for best practices in frontend design and table management
 
-## DEMO Video Link: 
+---
 
+## SkillUpCourse Identification (for submission)
+- **Name of Course:** Angular Basics Free Course with Certification  
+- **Host Institution:** Simplilearn (SkillUp platform)  
+- **Link:** [Simplilearn Angular Basics Free Course](https://www.simplilearn.com/skillup-free-online-courses)  
+- **Length/Time:** 3 hours of self-paced video lessons  
+- **Note:** Completed as part of Tutorial Activity 3 to earn the certificate. This course also provided guidance during project development.
 
---------------------------------------------------------------------------------------
+---
 
-
-
-
-
+## DEMO Video Link:
