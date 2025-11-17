@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # INFR3120-Fall25-Project
 # SkillSwap – Peer-to-Peer Micro-Tutoring Platform
 
@@ -86,8 +85,24 @@ During development, I referred to:
 
 ---
 
-## DEMO Video Link:
+## Live Link:
+
+GitHub Repo Link: 
+SkillSwap/Frontend Live link: https://infr3120-fall25-project-skillswap-fronend.onrender.com
+SkillSwap-Backend Live Link: https://infr3120-fall25-project-skillswap-backend.onrender.com
+WebPage LocalLink: http://localhost:3000/
+
+## DEMO Video Link: ###### Paste our youtube link
+
 =======
+#### Member 2 ######
+
+
+
+##### Member 3 ######
+
+#### DEFAULT #########
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
