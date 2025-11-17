@@ -95,7 +95,68 @@ WebPage LocalLink: http://localhost:3000/
 ## DEMO Video Link: ###### Paste our youtube link
 
 =======
-#### Member 2 ######
+#### Isimbi Rehema
+
+SkillSwap – Peer-to-Peer Micro-Tutoring Platform 
+Credits
+Backend Developer: Isimbi Rehema (Session schema, CRUD routes, API integration, backend documentation)
+
+# Project Overview
+
+SkillSwap is a web application designed to help students share knowledge through peer-to-peer micro-tutoring sessions. This project was developed as part of (INFR3120 – Web and Scripting - Fall 2025), Group 48.
+
+The platform allows users to:
+- Create skill sessions with details such as title, description, duration, offered by, and availability.
+- View active sessions in a dashboard table.
+- Manage sessions with full CRUD functionality (Create, Read, Update, Delete).
+- Connect frontend forms and dashboard to backend routes for persistent data storage.
+
+# Backend Contribution (Isimbi)
+As the "backend developer", my responsibilities included:
+Session Schema: 
+
+- Designed MongoDB schema for skill sessions.
+- Fields include: title, skill, tutor, time, status, description.
+  
+# CRUD Routes:
+- Implemented Create, Read, Update, and Delete routes using Node.js and Express.
+- Ensured proper error handling for invalid IDs and missing fields.
+- 
+#API Integration:
+
+- Connected backend routes to frontend form and dashboard.
+- Enabled live updates when sessions are created, updated, or deleted.
+  
+#Comments:
+
+- Added clear comments in backend code to explain logic and endpoints.
+- README Documentation:
+- Documented backend setup, schema, and endpoints for team reference.
+  
+#File Structure
+
+INFR3120-Fall25-Project/
+backend/ app.js # Main server file models/Session.js # MongoDB schema routes/sessions.js # CRUD routes .env # Environment variables package.json # Dependencies and scripts README.md # Documentation of backend setup and contributions
+frontend/ src/ App.js SessionForm.jsx SessionTable.jsx SkillSwap.css index.js public/ index.html
+assets/ # Logo and other static files
+
+#Tools & Technologies
+
+- Node.js – Backend runtime environment
+- Express.js – Web framework for routes and middleware
+- MongoDB + Mongoose – Database and schema modeling
+- dotenv – Environment variable management
+- CORS – Frontend-backend integration
+- GitHub – Version control and collaboration
+  
+#Learning Resources
+
+During development, I referred to:
+- W3Schools – for Node.js, Express, and MongoDB examples
+- YouTube tutorials – for CRUD operations and API integration
+- MongoDB documentation – for schema design and queries
+- Developer blogs – for best practices in backend structure and REST API
+
 
 
 
