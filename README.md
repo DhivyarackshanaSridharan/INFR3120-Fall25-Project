@@ -92,9 +92,10 @@ SkillSwap/Frontend Live link: https://infr3120-fall25-project-skillswap-fronend.
 SkillSwap-Backend Live Link: https://infr3120-fall25-project-skillswap-backend.onrender.com
 WebPage LocalLink: http://localhost:3000/
 
-## DEMO Video Link: ###### Paste our youtube link
+## DEMO Video Link: https://youtu.be/WBUEx9o4weU
 
 =======
+
 #### Isimbi Rehema
 
 SkillSwap – Peer-to-Peer Micro-Tutoring Platform 
