@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # INFR3120-Fall25-Project
 # SkillSwap – Peer-to-Peer Micro-Tutoring Platform
 
