@@ -44,7 +44,7 @@ Presented backend portion during demo
 Responsibilities:
 Tested all CRUD operations end-to-end
 Helped identify and resolve bugs
-Prepared the application for deployment (Render, Netlify, Vercel)
+Prepared the application for deployment (Render)
 Recorded and edited team demo video
 Presented dashboard and deployment process
 Documented deployment steps and project testing
@@ -169,8 +169,8 @@ Shows Logout when logged in
 
 **Deployment Links**
 
-Frontend (Netlify):
-[https://skillswapfrontend.netlify.app](https://skillswapfrontend.netlify.app/#/)
+Frontend (render):
+https://skillswap-frontend-8ns7.onrender.com/ 
 
 Backend (Render):
 [https://skillswap-backend-esp6.onrender.com](https://skillswap-backend-esp6.onrender.com/)
