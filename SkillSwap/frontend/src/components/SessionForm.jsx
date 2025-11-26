@@ -23,7 +23,11 @@ export default function SessionForm() {
       const API_URL = `${process.env.REACT_APP_API_URL.replace(/\/$/, '')}/sessions`;
       const res = await fetch(API_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          // ✅ ADDED: send JWT token to backend
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
         body: JSON.stringify({
           title: form.title.trim(),
           description: form.description.trim(),

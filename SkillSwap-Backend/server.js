@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
+// Import authentication routes
+const authRoutes = require('./routes/auth');
+const authMiddleware = require('./middleware/authMiddleware');
+
 
 // Load environment variables
 dotenv.config();
@@ -12,6 +16,9 @@ const app = express();
 // Middleware
 app.use(cors());              // Allow frontend requests
 app.use(express.json());      // Parse JSON bodies
+// Mount authentication routes
+app.use('/api/auth', authRoutes);
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
@@ -27,7 +34,7 @@ app.get('/', (req, res) => {
 const Session = require('./models/sessions');
 
 // Create a new session
-app.post('/sessions', async (req, res) => {
+app.post('/sessions', authMiddleware, async (req, res) => {
   console.log("Received body:", req.body);  // Debug log
   try {
     const { title, description, date, duration } = req.body;
@@ -76,7 +83,7 @@ app.get('/sessions/:id', async (req, res) => {
 });
 
 // Update a session
-app.put('/sessions/:id', async (req, res) => {
+app.put('/sessions/:id', authMiddleware, async (req, res) => {
   try {
     const session = await Session.findByIdAndUpdate(
       req.params.id,
@@ -91,7 +98,7 @@ app.put('/sessions/:id', async (req, res) => {
 });
 
 // Delete a session
-app.delete('/sessions/:id', async (req, res) => {
+app.delete('/sessions/:id', authMiddleware, async (req, res) => {
   try {
     const session = await Session.findByIdAndDelete(req.params.id);
     if (!session) return res.status(404).json({ error: 'Session not found' });
