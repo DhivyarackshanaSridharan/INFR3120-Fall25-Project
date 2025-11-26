@@ -1,4 +1,4 @@
-# INFR3120-Fall25-Project
+# INFR3120-Fall25-Project PART 1
 # SkillSwap – Peer-to-Peer Micro-Tutoring Platform
 
 ## Credits
@@ -158,3 +158,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 >>>>>>> 946e9de (Final SkillSwap frontend)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# INFR3120-Fall25-Project PART II
+# SkillSwap – Peer-to-Peer Micro-Tutoring Platform
+
+
+
