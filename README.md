@@ -74,16 +74,6 @@ During development, I referred to:
 - YouTube tutorials – for practical demonstrations of form validation and CRUD logic
 - Various developer blogs and websites – for best practices in frontend design and table management
 
----
-
-## SkillUpCourse Identification (for submission)
-- **Name of Course:** Angular Basics Free Course with Certification  
-- **Host Institution:** Simplilearn (SkillUp platform)  
-- **Link:** [Simplilearn Angular Basics Free Course](https://www.simplilearn.com/skillup-free-online-courses)  
-- **Length/Time:** 3 hours of self-paced video lessons  
-- **Note:** Completed as part of Tutorial Activity 3 to earn the certificate. This course also provided guidance during project development.
-
----
 
 ## DEMO Video Link:
 =======
