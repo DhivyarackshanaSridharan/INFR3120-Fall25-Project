@@ -260,7 +260,7 @@ tr:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-/* ✅ NavBar Responsive Additions (ONLY the required part) */
+/*  NavBar Responsive Additions (ONLY the required part) */
 .navbar-left {
   flex: 1;
   min-width: 200px;
