@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 const router = express.Router();
 
-// Register
+// for Register
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
   res.status(201).json({ id: user._id, name: user.name, email: user.email });
 });
 
-// Login
+//  for Login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
