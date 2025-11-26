@@ -28,7 +28,7 @@ export default function SessionTable() {
     return () => window.removeEventListener('session-created', handler);
   }, []);
 
-  // ✅ NEW: Delete handler with JWT token
+  //  NEW: Delete handler with JWT token
   const handleDelete = async (id) => {
     try {
       const API_URL = `${process.env.REACT_APP_API_URL.replace(/\/$/, '')}/sessions/${id}`;
