@@ -25,7 +25,7 @@ export default function SessionForm() {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          // ✅ ADDED: send JWT token to backend
+          //  ADDED: send JWT token to backend
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify({
