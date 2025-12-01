@@ -9,6 +9,7 @@ import Login from './pages/Login';          // new login page
 import Register from './pages/Register';    // new register page
 import ForgotPassword from './pages/ForgotPassword';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ResetPassword from './components/ResetPassword';
 
 function App() {
   const [route, setRoute] = useState(window.location.hash || '#/');
@@ -53,6 +54,8 @@ function App() {
         <Register />
       ) : route.startsWith('#/forgot-password') ? (
         <ForgotPassword />
+         ) : route.startsWith('#/reset-password') ? (   // ResetPassword condition
+        <ResetPassword />
       ) : (
         <>
           <div className="content-card">

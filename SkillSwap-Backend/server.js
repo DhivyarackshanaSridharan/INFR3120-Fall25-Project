@@ -5,6 +5,7 @@ const cors = require('cors');
 // Import authentication routes
 const authRoutes = require('./routes/auth');
 const authMiddleware = require('./middleware/authMiddleware');
+const Session = require('./models/sessions');
 
 
 // Load environment variables
@@ -29,9 +30,6 @@ mongoose.connect(process.env.MONGODB_URI)
 app.get('/', (req, res) => {
   res.send('SkillSwap Backend is running!');
 });
-
-// Import Session model
-const Session = require('./models/sessions');
 
 // Create a new session
 app.post('/sessions', authMiddleware, async (req, res) => {

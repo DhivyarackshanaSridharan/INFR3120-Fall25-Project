@@ -46,7 +46,7 @@ export default function Login({ onLogin }) {
 
       {/* Forgot Password link */}
       <p style={{ marginTop: '12px' }}>
-        <a href="#/forgot-password">Forgot Password?</a>
+          <a href="#/reset-password">Forgot Password?</a>
       </p>
     </form>
   );
