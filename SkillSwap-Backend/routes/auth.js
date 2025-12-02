@@ -2,8 +2,12 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const passport = require('passport');
 
 const router = express.Router();
+
+// Debug log to confirm file is loaded
+console.log("Auth routes file loaded");
 
 // Register
 router.post('/register', async (req, res) => {
@@ -37,9 +41,7 @@ router.post('/login', async (req, res) => {
   res.json({ token, name: user.name, email: user.email });
 });
 
-
 // POST /reset-password
-// Allows a user to reset their password by providing email + new password
 router.post('/reset-password', async (req, res) => {
   const { email, newPassword } = req.body;
 
@@ -48,16 +50,12 @@ router.post('/reset-password', async (req, res) => {
   }
 
   try {
-    // Find user by email
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Hash the new password
     const hashedPassword = await bcrypt.hash(newPassword, 10);
-
-    // Update user password
     user.password = hashedPassword;
     await user.save();
 
@@ -67,5 +65,62 @@ router.post('/reset-password', async (req, res) => {
     res.status(500).json({ message: 'Error resetting password' });
   }
 });
+
+// Google login start
+router.get('/google', (req, res, next) => {
+  console.log("Google login route hit");
+  next();
+}, passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+// Google callback
+router.get('/google/callback',
+  (req, res, next) => {
+    console.log("Google callback route hit");
+    next();
+  },
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  (req, res) => {
+    console.log("Google login successful, redirecting to frontend");
+    res.redirect('https://skillswapfrontend.vercel.app');
+  }
+);
+
+// GitHub login start
+router.get('/github', (req, res, next) => {
+  console.log("GitHub login route hit");
+  next();
+}, passport.authenticate('github', { scope: ['user:email'] }));
+
+// GitHub callback
+router.get('/github/callback',
+  (req, res, next) => {
+    console.log("GitHub callback route hit");
+    next();
+  },
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  (req, res) => {
+    console.log("GitHub login successful, redirecting to frontend");
+    res.redirect('https://skillswapfrontend.vercel.app');
+  }
+);
+
+// Discord login start
+router.get('/discord', (req, res, next) => {
+  console.log("Discord login route hit");
+  next();
+}, passport.authenticate('discord'));
+
+// Discord callback
+router.get('/discord/callback',
+  (req, res, next) => {
+    console.log("Discord callback route hit");
+    next();
+  },
+  passport.authenticate('discord', { failureRedirect: '/login' }),
+  (req, res) => {
+    console.log("Discord login successful, redirecting to frontend");
+    res.redirect('https://skillswapfrontend.vercel.app');
+  }
+);
 
 module.exports = router;

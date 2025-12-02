@@ -260,7 +260,7 @@ tr:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-/* ✅ NavBar Responsive Additions (ONLY the required part) */
+/* NavBar Responsive Additions (ONLY the required part) */
 .navbar-left {
   flex: 1;
   min-width: 200px;
@@ -300,4 +300,30 @@ tr:hover {
   .navbar-right {
     gap: 24px;
   }
+}
+
+.login-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  width: 250px;
+  justify-content: center;
+}
+
+.google {
+  background-color: #052254;
+}
+
+.github {
+  background-color: #333333;
+}
+
+.discord {
+  background-color: #5865F2;
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LoginButtons from '../components/LoginButtons'; // import the OAuth buttons
 
 export default function Login({ onLogin }) {
   const [email, setEmail] = useState('');
@@ -24,30 +25,40 @@ export default function Login({ onLogin }) {
   };
 
   return (
-    <form onSubmit={submit} style={{ maxWidth: 360, margin: '24px auto' }}>
+    <div style={{ maxWidth: 360, margin: '24px auto' }}>
       <h2>Login</h2>
-      <input
-        type="email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        placeholder="Email"
-        required
-        style={{ display:'block', width:'100%', margin:'8px 0', padding:'8px' }}
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        placeholder="Password"
-        required
-        style={{ display:'block', width:'100%', margin:'8px 0', padding:'8px' }}
-      />
-      <button type="submit">Login</button>
 
-      {/* Forgot Password link */}
-      <p style={{ marginTop: '12px' }}>
+      {/* Local login form */}
+      <form onSubmit={submit}>
+        <input
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+          style={{ display:'block', width:'100%', margin:'8px 0', padding:'8px' }}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+          style={{ display:'block', width:'100%', margin:'8px 0', padding:'8px' }}
+        />
+        <button type="submit">Login</button>
+
+        {/* Forgot Password link */}
+        <p style={{ marginTop: '12px' }}>
           <a href="#/reset-password">Forgot Password?</a>
-      </p>
-    </form>
+        </p>
+      </form>
+
+      {/* Divider */}
+      <hr style={{ margin: '20px 0' }} />
+
+      {/* OAuth login buttons */}
+      <LoginButtons />
+    </div>
   );
 }

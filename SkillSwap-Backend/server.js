@@ -6,7 +6,8 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const authMiddleware = require('./middleware/authMiddleware');
 const Session = require('./models/sessions');
-
+const session = require('express-session');
+const passport = require('passport');
 
 // Load environment variables
 dotenv.config();
@@ -18,8 +19,27 @@ const app = express();
 app.use(cors());              // Allow frontend requests
 app.use(express.json());      // Parse JSON bodies
 // Mount authentication routes
+console.log("Mounted /api/auth routes");
 app.use('/api/auth', authRoutes);
 
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Minimal serialize/deserialize (upgrade later to use DB user IDs)
+passport.serializeUser((user, done) => done(null, user));
+passport.deserializeUser((obj, done) => done(null, obj));
+
+// Load OAuth strategies
+require('./auth/google');
+require('./auth/github');
+require('./auth/discord');
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
