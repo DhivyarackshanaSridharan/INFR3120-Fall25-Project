@@ -15,11 +15,20 @@ const app = express();
 
 // Middleware
 
+const allowedOrigins = [
+  'http://localhost:3001',
+  'https://frontend-fp7sqranu-dhivyarackshanasridharans-projects.vercel.app',
+  'https://infr-3120-fall25-project-eight.vercel.app'
+];
+
 const corsOptions = {
-  origin: [
-    'http://localhost:3001',
-    'https://infr-3120-fall25-project-eight.vercel.app'
-  ],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 };
 
