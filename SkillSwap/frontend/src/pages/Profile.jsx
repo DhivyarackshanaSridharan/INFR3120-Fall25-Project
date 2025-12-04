@@ -31,6 +31,7 @@ const Profile = () => {
       <p><strong>Email:</strong> {user?.email}</p>
 
       {/* Upload form with refresh callback */}
+      {/*
       <ProfilePicUpload onUploadSuccess={() => {
         fetch("https://skillswapbackend-f83q.onrender.com/api/auth/me", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -39,6 +40,7 @@ const Profile = () => {
           .then(data => setUser(data.user))
           .catch(err => console.error(err));
       }} />
+      */}
     </div>
   );
 };

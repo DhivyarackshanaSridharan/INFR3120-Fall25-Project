@@ -90,18 +90,20 @@ router.post('/update-profile-pic', upload.single('profilePic'), async (req, res)
     if (!user) return res.status(404).json({ message: "User not found" });
 
     if (!req.file) {
-    return res.status(400).json({ message: "No file uploaded" });
-  }
+      return res.status(400).json({ message: "No file uploaded" });
+    }
 
     user.profilePic = `/uploads/${req.file.filename}`;
     await user.save();
 
-  res.json({ message: "Profile picture updated", profilePic: user.profilePic });
+    res.json({ message: "Profile picture updated", profilePic: user.profilePic });
 
   } catch (err) {
-    res.status(500).json({ message: "Error updating profile picture", error: err.message });
+    console.error("Upload error in /update-profile-pic:", err);   
+    res.status(500).json({ message: "Error updating profile picture" });
   }
 });
+
 
 router.get('/me', async (req, res) => {
   try {

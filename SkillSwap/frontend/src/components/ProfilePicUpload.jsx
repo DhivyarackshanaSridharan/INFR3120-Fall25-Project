@@ -24,7 +24,7 @@ const ProfilePicUpload = ({ onUploadSuccess }) => {
       if (res.ok) {
         alert("Profile picture updated!");
         console.log("New profilePic URL:", data.profilePic);
-        // ✅ trigger refresh in Profile.jsx
+        // trigger refresh in Profile.jsx
         if (onUploadSuccess) {
           onUploadSuccess();
         }

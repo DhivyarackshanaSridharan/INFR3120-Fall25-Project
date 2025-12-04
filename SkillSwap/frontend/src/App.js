@@ -57,9 +57,13 @@ function App() {
         <ForgotPassword />
       ) : route.startsWith('#/reset-password') ? (   // ResetPassword condition
         <ResetPassword />
-      ) : route.startsWith('#/profile') ? (          // new profile condition
-        <Profile />
-      ) : (
+            ) 
+      // Profile route disabled temporarily
+      // route.startsWith('#/profile') ? (
+      //   <Profile />
+      // ) 
+      : (
+
         <>
           <div className="content-card">
             <h2 className="text-center mb-3">Create a skill session</h2>

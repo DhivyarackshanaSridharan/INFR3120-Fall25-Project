@@ -31,10 +31,11 @@ export default function NavBar({ user, onLogout }) {
             </>
           ) : (
             <>
-              {/* New Profile Link */}
+              {/* New Profile Link 
               <li className="nav-item">
                 <a className="nav-link" href="#/profile">My Profile</a>
               </li>
+              */}
 
               {/* Logout button */}
               <li className="nav-item">

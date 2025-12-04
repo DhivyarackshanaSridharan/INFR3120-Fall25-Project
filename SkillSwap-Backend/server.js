@@ -35,6 +35,21 @@ const corsOptions = {
 app.use(cors(corsOptions));   // handles preflight automatically
 app.use(express.json());
 
+const multer = require('multer');
+const path = require('path');
+
+// Storage engine
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage });
+
 // Serve uploaded files
 app.use('/uploads', express.static('uploads'));
 
