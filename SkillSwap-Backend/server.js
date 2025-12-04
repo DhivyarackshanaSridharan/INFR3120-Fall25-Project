@@ -18,7 +18,8 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:3001',
   'https://frontend-fp7sqranu-dhivyarackshanasridharans-projects.vercel.app',
-  'https://infr-3120-fall25-project-eight.vercel.app'
+  'https://infr-3120-fall25-project-eight.vercel.app',
+  'https://ssfrontend-a70c30uew-dhivyarackshanasridharans-projects.vercel.app'
 ];
 
 const corsOptions = {
