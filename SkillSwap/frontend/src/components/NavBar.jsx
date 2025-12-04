@@ -30,19 +30,26 @@ export default function NavBar({ user, onLogout }) {
               </li>
             </>
           ) : (
-            /* If logged in, show Logout button */
-            <li className="nav-item">
-              <button
-                className="btn btn-outline-danger ms-2"
-                onClick={() => {
-                  localStorage.removeItem('token');
-                  onLogout?.();
-                  window.location.hash = '#/login';
-                }}
-              >
-                Logout
-              </button>
-            </li>
+            <>
+              {/* New Profile Link */}
+              <li className="nav-item">
+                <a className="nav-link" href="#/profile">My Profile</a>
+              </li>
+
+              {/* Logout button */}
+              <li className="nav-item">
+                <button
+                  className="btn btn-outline-danger ms-2"
+                  onClick={() => {
+                    localStorage.removeItem('token');
+                    onLogout?.();
+                    window.location.hash = '#/login';
+                  }}
+                >
+                  Logout
+                </button>
+              </li>
+            </>
           )}
         </ul>
 

@@ -2,12 +2,26 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const passport = require('passport');
+
+//const passport = require('passport');//}
+
+const multer = require('multer');
+const path = require('path');
+
+
 
 const router = express.Router();
 
 // Debug log to confirm file is loaded
 console.log("Auth routes file loaded");
+
+// Configure storage: save files in /uploads folder
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, 'uploads/'),
+  filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
+});
+
+const upload = multer({ storage });
 
 // Register
 router.post('/register', async (req, res) => {
@@ -66,61 +80,43 @@ router.post('/reset-password', async (req, res) => {
   }
 });
 
-// Google login start
-router.get('/google', (req, res, next) => {
-  console.log("Google login route hit");
-  next();
-}, passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.post('/update-profile-pic', upload.single('profilePic'), async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) return res.status(401).json({ message: "No token provided" });
 
-// Google callback
-router.get('/google/callback',
-  (req, res, next) => {
-    console.log("Google callback route hit");
-    next();
-  },
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  (req, res) => {
-    console.log("Google login successful, redirecting to frontend");
-    res.redirect('https://skillswapfrontend.vercel.app');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.uid);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    if (!req.file) {
+    return res.status(400).json({ message: "No file uploaded" });
   }
-);
 
-// GitHub login start
-router.get('/github', (req, res, next) => {
-  console.log("GitHub login route hit");
-  next();
-}, passport.authenticate('github', { scope: ['user:email'] }));
+    user.profilePic = `/uploads/${req.file.filename}`;
+    await user.save();
 
-// GitHub callback
-router.get('/github/callback',
-  (req, res, next) => {
-    console.log("GitHub callback route hit");
-    next();
-  },
-  passport.authenticate('github', { failureRedirect: '/login' }),
-  (req, res) => {
-    console.log("GitHub login successful, redirecting to frontend");
-    res.redirect('https://skillswapfrontend.vercel.app');
+  res.json({ message: "Profile picture updated", profilePic: user.profilePic });
+
+  } catch (err) {
+    res.status(500).json({ message: "Error updating profile picture", error: err.message });
   }
-);
+});
 
-// Discord login start
-router.get('/discord', (req, res, next) => {
-  console.log("Discord login route hit");
-  next();
-}, passport.authenticate('discord'));
+router.get('/me', async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) return res.status(401).json({ message: "No token provided" });
 
-// Discord callback
-router.get('/discord/callback',
-  (req, res, next) => {
-    console.log("Discord callback route hit");
-    next();
-  },
-  passport.authenticate('discord', { failureRedirect: '/login' }),
-  (req, res) => {
-    console.log("Discord login successful, redirecting to frontend");
-    res.redirect('https://skillswapfrontend.vercel.app');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.uid).select("-password");
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.json({ user });
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching user", error: err.message });
   }
-);
+});
+
 
 module.exports = router;

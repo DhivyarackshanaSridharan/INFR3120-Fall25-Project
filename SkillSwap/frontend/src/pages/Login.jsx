@@ -6,23 +6,41 @@ export default function Login({ onLogin }) {
   const [password, setPassword] = useState('');
 
   const submit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
+
+  console.log('API URL:', process.env.REACT_APP_API_URL); 
+
+  try {
     const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ email, password }),
+      credentials: 'include' 
     });
-    const data = await res.json();
+
+    let data;
+    try {
+      data = await res.json();
+    } catch {
+      data = { message: 'Server did not return JSON' };
+    }
+
+    console.log('Login response:', res.status, data); 
 
     if (res.ok) {
       localStorage.setItem('token', data.token);
       onLogin?.({ name: data.name, email: data.email });
       alert('Logged in successfully');
-      window.location.hash = '#/'; // go back home
+      window.location.hash = "#/profile"; // redirect to profile
     } else {
       alert(data.message || 'Login failed');
     }
-  };
+  } catch (err) {
+    console.error('Login error:', err);
+    alert('Network error: ' + err.message);
+  }
+};
+
 
   return (
     <div style={{ maxWidth: 360, margin: '24px auto' }}>

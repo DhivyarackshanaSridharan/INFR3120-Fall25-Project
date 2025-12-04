@@ -6,40 +6,29 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const authMiddleware = require('./middleware/authMiddleware');
 const Session = require('./models/sessions');
-const session = require('express-session');
-const passport = require('passport');
+const User = require('./models/User'); 
 
-// Load environment variables
 dotenv.config();
 console.log("Mongo URI:", process.env.MONGODB_URI);
 
 const app = express();
 
 // Middleware
-app.use(cors());              // Allow frontend requests
-app.use(express.json());      // Parse JSON bodies
+
+const corsOptions = {
+  origin: 'http://localhost:3001',
+  credentials: true
+};
+
+app.use(cors(corsOptions));   // handles preflight automatically
+app.use(express.json());
+
+// Serve uploaded files
+app.use('/uploads', express.static('uploads'));
+
 // Mount authentication routes
 console.log("Mounted /api/auth routes");
 app.use('/api/auth', authRoutes);
-
-
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Minimal serialize/deserialize (upgrade later to use DB user IDs)
-passport.serializeUser((user, done) => done(null, user));
-passport.deserializeUser((obj, done) => done(null, obj));
-
-// Load OAuth strategies
-require('./auth/google');
-require('./auth/github');
-require('./auth/discord');
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
@@ -51,27 +40,26 @@ app.get('/', (req, res) => {
   res.send('SkillSwap Backend is running!');
 });
 
+// Profile route (protected)
+app.get('/profile', authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId).select('-password'); // exclude password
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Create a new session
 app.post('/sessions', authMiddleware, async (req, res) => {
-  console.log("Received body:", req.body);  // Debug log
+  console.log("Received body:", req.body);
   try {
     const { title, description, date, duration } = req.body;
-
-    // Simple validation
     if (!title || !description || !date || !duration) {
-      return res.status(400).json({
-        error: 'All fields are required: title, description, date, duration'
-      });
+      return res.status(400).json({ error: 'All fields are required' });
     }
-
-    // Explicitly map fields to avoid saving unwanted data
-    const session = new Session({
-      title,
-      description,
-      date,
-      duration
-    });
-
+    const session = new Session({ title, description, date, duration });
     await session.save();
     res.status(201).json(session);
   } catch (err) {
@@ -103,11 +91,7 @@ app.get('/sessions/:id', async (req, res) => {
 // Update a session
 app.put('/sessions/:id', authMiddleware, async (req, res) => {
   try {
-    const session = await Session.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const session = await Session.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!session) return res.status(404).json({ error: 'Session not found' });
     res.json(session);
   } catch (err) {

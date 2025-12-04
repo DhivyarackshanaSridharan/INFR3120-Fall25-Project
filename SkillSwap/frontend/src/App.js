@@ -10,6 +10,7 @@ import Register from './pages/Register';    // new register page
 import ForgotPassword from './pages/ForgotPassword';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ResetPassword from './components/ResetPassword';
+import Profile from './pages/Profile';
 
 function App() {
   const [route, setRoute] = useState(window.location.hash || '#/');
@@ -31,14 +32,14 @@ function App() {
 
       {/* Logo, title, and sign-in */}
       <div className="header">
-  <div className="header-left">
-    <img src={logo} alt="SkillSwap Logo" className="logo" />
-    <div className="title-block">
-      <h1 className="title">SkillSwap</h1>
-      <p className="tagline">Peer-to-peer micro-tutoring for students</p>
-    </div>
-  </div>
-  <button
+        <div className="header-left">
+          <img src={logo} alt="SkillSwap Logo" className="logo" />
+          <div className="title-block">
+              <h1 className="title">SkillSwap</h1>
+              <p className="tagline">Peer-to-peer micro-tutoring for students</p>
+      </div>
+      </div>
+      <button
     className="signin-btn"
     onClick={() => (window.location.hash = '#/login')}
   >
@@ -54,8 +55,10 @@ function App() {
         <Register />
       ) : route.startsWith('#/forgot-password') ? (
         <ForgotPassword />
-         ) : route.startsWith('#/reset-password') ? (   // ResetPassword condition
+      ) : route.startsWith('#/reset-password') ? (   // ResetPassword condition
         <ResetPassword />
+      ) : route.startsWith('#/profile') ? (          // new profile condition
+        <Profile />
       ) : (
         <>
           <div className="content-card">
