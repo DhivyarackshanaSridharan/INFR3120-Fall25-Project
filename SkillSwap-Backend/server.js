@@ -16,7 +16,10 @@ const app = express();
 // Middleware
 
 const corsOptions = {
-  origin: 'http://localhost:3001',
+  origin: [
+    'http://localhost:3001',
+    'https://infr-3120-fall25-project-eight.vercel.app'
+  ],
   credentials: true
 };
 
