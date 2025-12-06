@@ -1,93 +1,220 @@
 <<<<<<< HEAD
 # INFR3120-Fall25-Project
 # SkillSwap – Peer-to-Peer Micro-Tutoring Platform
+# **README.md **  
+## **Overview**
+SkillSwap is a full‑stack web application that allows users to register, log in, and browse available skill‑sharing sessions.  
+The system includes:
 
-## Credits
-- Frontend Developer: Dhivyarackshana (Landing page, form UI, validation, dashboard)
+- A cloud‑hosted backend (Node.js + Express)  
+- A cloud‑hosted NoSQL database (MongoDB Atlas)  
+- A deployed frontend  
+- Fully functional authentication  
+- Live API integration  
+- Clean UI and responsive design  
 
-## Project Overview
-SkillSwap is a web application designed to help students share knowledge through peer-to-peer micro-tutoring sessions.  
-This project was developed as part of (INFR3120 – Web and Scripting - Fall 2025), Group 48.
+This submission represents our **final release**, including deployment, testing, and a full demonstration video.
 
-The platform allows users to:
-- Create skill sessions with details such as title, description, duration, offered by, and availability.
-- View active sessions in a dashboard table.
-- Manage sessions with basic Create and Delete functionality (Edit placeholder included).
-- Prepare for backend integration to enable full CRUD operations.
 
-## Frontend Contribution (Dhivyarackshana)
-As the "frontend developer", my responsibilities included:
+# ## **Live Deployment Links**
 
-  Landing Page (Step 5.1):
-  - Added site name "SkillSwap" and team logo.
-  - Included tagline: *Peer-to-peer micro-tutoring for students*.
+### **Frontend:**  
+https://skillswapfrontend-1oc2.onrender.com/
 
-  Hero Button + Form UI (Step 5.2):
-  - Implemented a hero button labeled *Create Skill Session*.
-  - Built a form with required fields: Title, Description, Duration, Offered By, Availability.
+### **Backend:**  
+https://skillswapbackend-f83q.onrender.com/ 
 
-  Frontend Logic + Validation (Step 5.3):
-  - Added JavaScript to toggle form visibility.
-  - Implemented input validation to ensure all fields are filled.
-  - Added confirmation popup (“Are you sure you want to submit this session?”).
-  - Reset and hide form after submission.
 
-  Dashboard/Table View (Step 5.4):
-  - Created a table to display active skill sessions.
-  - Added "Delete" functionality (frontend only).
-  - Added "Edit" placeholder (to be connected to backend later).
+# ## **Group Members & Contributions**
 
-## File Structure
+### ### **Dhivyarackshana (Frontend Developer)**
+**Responsibilities:**
+- Designed and implemented the entire frontend UI  
+- Built Login, Register, and Dashboard pages  
+- Implemented form validation and error handling  
+- Integrated frontend with backend REST APIs  
+- Tested all API calls using browser dev tools  
+- Deployed the frontend to cloud hosting  
+- Ensured UI consistency, navigation flow, and responsiveness  
 
-#### This was created just for a practice the below one is the one is the actual file format for the project ####
-INFR3120-Fall25-Project/ 
-index.html # Landing page, hero button, form, dashboard 
-style.css # Styling for layout, form, table, and buttons 
-script.js # Frontend logic: validation, confirmation, table CRUD 
-README.md # Documentation of project and contributions 
-assets/ # Logo and other static files
+**Key Files:**
+- `/frontend/index.html`  
+- `/frontend/login.js`  
+- `/frontend/register.js`  
+- `/frontend/dashboard.js`  
+- `/frontend/styles.css`  
 
-#### The actual file structure ####
-INFR3120-Fall25-Project/  
 
- frontend/  
-   src/  
-        App.js              # Main React entry point  
-        SessionForm.jsx     # Form component  
-        SessionTable.jsx    # Table component  
-        SkillSwap.css       # Styling for layout, form, table, and buttons  
-        index.js            # React DOM rendering  
-   public/  
-        index.html          # React root HTML  
 
-  assets/                   # Logo and other static files  
-  README.md                 # Documentation of project and contributions  
+### ### **Isimbi – Backend Developer**
+**Responsibilities:**
+- Built Node.js + Express backend  
+- Implemented authentication (register + login)  
+- Connected backend to MongoDB Atlas  
+- Created sessions API endpoint  
+- Added validation, hashing, and error handling  
+- Configured CORS for cross‑domain communication  
+- Deployed backend to cloud provider  
 
-## Tools & Technologies
-- HTML5 – Structure of the web pages
-- CSS3 – Styling and layout
-- JavaScript (ES6) – Interactivity, validation, and dashboard logic
-- GitHub – Version control and collaboration
+**Key Files:**
+- `/backend/server.js`  
+- `/backend/routes/auth.js`  
+- `/backend/routes/sessions.js`  
+- `/backend/models/User.js`  
+- `/backend/models/Session.js`  
 
-## Learning Resources
-During development, I referred to:
-- [W3Schools](https://www.w3schools.com/) – for HTML, CSS, and JavaScript syntax examples
-- YouTube tutorials – for practical demonstrations of form validation and CRUD logic
-- Various developer blogs and websites – for best practices in frontend design and table management
 
----
 
-## SkillUpCourse Identification (for submission)
-- **Name of Course:** Angular Basics Free Course with Certification  
-- **Host Institution:** Simplilearn (SkillUp platform)  
-- **Link:** [Simplilearn Angular Basics Free Course](https://www.simplilearn.com/skillup-free-online-courses)  
-- **Length/Time:** 3 hours of self-paced video lessons  
-- **Note:** Completed as part of Tutorial Activity 3 to earn the certificate. This course also provided guidance during project development.
+### ### ** Richie – Testing, Debugging & Deployment Integration**
+**Responsibilities:**
+- Tested all frontend–backend interactions  
+- Used Postman + browser network tab for API testing  
+- Debugged CORS issues, URL mismatches, and validation errors  
+- Verified deployment logs and database connectivity  
+- Performed final system testing on live URLs  
+- Ensured the entire workflow (register → login → dashboard) worked smoothly  
 
----
+**Key Tasks:**
+- API testing  
+- Deployment verification  
+- Error tracing  
+- Final QA  
 
-## DEMO Video Link:
-=======
+
+
+# ## **Technologies Used**
+
+### **Frontend**
+- HTML5  
+- CSS3  
+- JavaScript  
+- Fetch API / Axios  
+- Responsive design principles  
+
+### **Backend**
+- Node.js  
+- Express.js  
+- MongoDB Atlas  
+- Mongoose  
+- bcrypt (password hashing)  
+- CORS middleware  
+
+### **Deployment**
+- Render 
+- MongoDB Atlas  
+- GitHub for version control  
+
+
+
+# ## **How to Run the Project Locally**
+
+### **1. Clone the repository**
+
+git clone https://github.com/DhivyarackshanaSridharan/INFR3120-Fall25-Project.git
+
+
+### **2. Install backend dependencies**
+
+cd backend
+npm install
+npm start
+
+
+### **3. Run frontend**
+Open the frontend folder and launch:
+
+npm start
+
+(or use Live Server extension)
+
+### **4. Environment Variables**
+Backend requires:
+
+MONGO_URI=mongodb+srv://skillswap_user:abc%40123@cluster0.yavuc3s.mongodb.net/skillswapDB?retryWrites=true&w=majority
+JWT_SECRET=jwt2025skillswapsecret
+
+
+
+
+# ## **External Code & References (Required for Academic Integrity)**  
+Below are the resources we used for learning, syntax clarification, and small code snippets (less than 10% of total code):
+
+### **Documentation & Tutorials**
+1. **W3Schools – JavaScript Fetch API**  
+   https://www.w3schools.com/js/js_api_fetch.asp  
+
+2. **W3Schools – HTML Forms & Validation**  
+   https://www.w3schools.com/html/html_forms.asp  
+
+3. **MDN Web Docs – Express.js Guide**  
+   https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs  
+
+4. **MDN – CORS Explained**  
+   https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS  
+
+5. **MongoDB Atlas Documentation**  
+   https://www.mongodb.com/docs/atlas/  
+
+6. **YouTube – Node.js + Express Authentication Tutorial**  
+   Traversy Media  
+   https://www.youtube.com/watch?v=Ud5xKCYQTjM  
+
+7. **YouTube – REST API Crash Course**  
+   Programming with Mosh  
+   https://www.youtube.com/watch?v=fgTGADljAeg  
+
+8. **bcrypt Documentation**  
+   https://www.npmjs.com/package/bcrypt  
+
+9. **SkillUpCourse Identification**
+
+   Name of Course: Angular Basics Free Course with Certification
+   Host Institution: Simplilearn (SkillUp platform)
+   Link: Simplilearn Angular Basics Free Course
+   Length/Time: 3 hours of self-paced video lessons
+   Note: Completed as part of Tutorial Activity 3 to earn the certificate. This course also provided guidance during project development.
+
+### **External Code Snippets Used (Under 10%)**
+- Basic Express server setup (from MDN example)  
+- Sample fetch() usage pattern (from W3Schools)  
+- Password hashing example (from bcrypt documentation)  
+
+All external code has been modified and documented within the project.
+
+
+The video includes:
+- Group introduction  
+- Individual contributions  
+- Code walkthrough  
+- Live demo of the deployed system  
+- Final summary  
+
+# ## **Project Structure**
+
+INFR3120-Fall25-Project/
+│
+├── backend/
+│   ├── server.js
+│   ├── routes/
+│   ├── models/
+│   └── package.json
+│
+├── frontend/
+│   ├── index.html
+│   ├── login.js
+│   ├── register.js
+│   ├── dashboard.js
+│   └── styles.css
+│
+└── README.md
+
+
+# ## **Conclusion**
+This final release demonstrates our ability to build, deploy, and test a full‑stack web application using modern web technologies.  
+Each team member contributed equally, and the system is fully functional, deployed, and ready for evaluation.
+
+Readme.md
+7 KB
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
