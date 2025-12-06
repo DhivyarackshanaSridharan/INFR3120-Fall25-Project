@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-//const passport = require('passport');//}
+//const passport
 
 const multer = require('multer');
 const path = require('path');
