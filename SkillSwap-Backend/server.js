@@ -62,7 +62,7 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-// Basic route to test server
+// route to test server
 app.get('/', (req, res) => {
   res.send('SkillSwap Backend is running!');
 });
@@ -78,7 +78,7 @@ app.get('/profile', authMiddleware, async (req, res) => {
   }
 });
 
-// Create a new session
+// for new session
 app.post('/sessions', authMiddleware, async (req, res) => {
   console.log("Received body:", req.body);
   try {
